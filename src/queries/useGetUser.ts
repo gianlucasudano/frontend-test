@@ -23,9 +23,10 @@ function useGetUser({ username }: { username: string }) {
     queryKey: [username],
     queryFn: () => getUser({ username }),
     enabled: !!username,
+    retry: false,
   });
 
-  return { isLoading, data, isError, error };
+  return { isLoading, data, isError, error }  as UserResponse; 
 }
 
 function useGetUserRepos({ repos_url }: { repos_url: string }) {
@@ -35,7 +36,7 @@ function useGetUserRepos({ repos_url }: { repos_url: string }) {
     enabled: !!repos_url,
   });
 
-  return { isLoading, data, isError, error } as UserResponse;
+  return { isLoading, data, isError, error };
 }
 
 export { useGetUser, useGetUserRepos };
