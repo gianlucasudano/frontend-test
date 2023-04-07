@@ -1,17 +1,12 @@
-import { useGetUser, useGetUserRepos } from "queries/useGetUser";
+import Container from "@mui/material/Container";
+import GithHubUserSearch from "components/GithHubUserSearch/";
 
 function App() {
-  const { isLoading, data, error } = useGetUser({ username: "gianlucasudano" });
-  const {
-    isLoading: isLoadingRepos,
-    data: dataRepos,
-    error: errorRepos,
-  } = useGetUserRepos({ repos_url: data?.repos_url });
-
-  console.log(isLoading, data, error);
-  console.log(isLoadingRepos, dataRepos, errorRepos);
-
-  return <h1>Workfully</h1>;
+  return (
+    <Container maxWidth="xs">
+      <GithHubUserSearch />
+    </Container>
+  );
 }
 
 export default App;
