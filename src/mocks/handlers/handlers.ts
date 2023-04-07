@@ -31,14 +31,14 @@ export const getReposResponseMocked = [
 ];
 
 export const getHappyUserResponseHandler = rest.get(
-  "/users/foobar",
+  "https://api.github.com/users/foobar",
   (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(getUserResponseMocked));
   }
 );
 
 export const getFailureUserResponseHandler = rest.get(
-  "/users/askccdf",
+  "https://api.github.com/users/askccdf",
   (_req, res, ctx) => {
     return res(
       ctx.status(404),
@@ -50,22 +50,22 @@ export const getFailureUserResponseHandler = rest.get(
 );
 
 export const getHappyUserReposResponseHandler = rest.get(
-  "/users/foobar/repos",
+  "https://api.github.com/users/foobar/repos",
   (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(getReposResponseMocked));
   }
 );
 
 export const getEmptyUserReposResponseHandler = rest.get(
-  "/users/foobar/repos",
+  "https://api.github.com/users/foobar/repos",
   (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json([]));
   }
 );
 
 export const handlers = [
-  getHappyUserResponseHandler,
+  getEmptyUserReposResponseHandler,
   getFailureUserResponseHandler,
   getHappyUserReposResponseHandler,
-  getEmptyUserReposResponseHandler,
+  getHappyUserResponseHandler,
 ];

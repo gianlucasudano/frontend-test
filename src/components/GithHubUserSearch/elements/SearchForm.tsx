@@ -39,7 +39,7 @@ function SearchForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} method="post">
-      <Stack p={2} direction="row" sx={{ justifyContent: "space-between" }}>
+      <Stack direction="row" sx={{ justifyContent: "space-between" }}>
         <TextFieldControlled
           sx={{ flexGrow: 2, mr: 1 }}
           {...userNameProps}

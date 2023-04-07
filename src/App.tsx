@@ -3,7 +3,7 @@ import GithHubUserSearch from "components/GithHubUserSearch/";
 
 function App() {
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="sm">
       <GithHubUserSearch />
     </Container>
   );

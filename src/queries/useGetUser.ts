@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from 'axios';
 import { getUser, getUserRepos } from "api/githubUsers";
 
-type Data = {
+export type UserData = {
   avatar_url: string;
   bio: string | null;
   html_url: string;
@@ -13,7 +13,7 @@ type Data = {
 
 type UserResponse = {
   isLoading: boolean;
-  data: Data;
+  data: UserData;
   isError: boolean;
   error: AxiosError;
 }
