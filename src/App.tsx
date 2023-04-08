@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import GitHubUserSearch from "components/GitHubUserSearch/";
+import GitHubUserSearch from "components/GithHubUserSearch";
 
 function App() {
   return (
