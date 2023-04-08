@@ -1,10 +1,10 @@
 import Container from "@mui/material/Container";
-import GithHubUserSearch from "components/GithHubUserSearch/";
+import GitHubUserSearch from "components/GitHubUserSearch/";
 
 function App() {
   return (
     <Container maxWidth="sm">
-      <GithHubUserSearch />
+      <GitHubUserSearch />
     </Container>
   );
 }

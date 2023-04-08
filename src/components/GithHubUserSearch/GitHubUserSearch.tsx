@@ -13,7 +13,7 @@ import SearchForm, { type UserName } from "./elements/SearchForm";
 import UserCard from "./elements/UserCard";
 import Repos from "./elements/Repos";
 
-function GithHubUserSearch() {
+function GitHubUserSearch() {
   const [username, setUsername] = useState<UserName>("");
   const { data, isError, isInitialLoading } = useGetUser({
     username: username,
@@ -47,4 +47,4 @@ function GithHubUserSearch() {
   );
 }
 
-export default GithHubUserSearch;
+export default GitHubUserSearch;

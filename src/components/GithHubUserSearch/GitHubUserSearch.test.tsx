@@ -6,7 +6,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
-import GithHubUserSearch from "./GithHubUserSearch";
+import GitHubUserSearch from "./GitHubUserSearch";
 import { getReposResponseMocked } from "mocks/handlers"
 
 const queryClient = new QueryClient({
@@ -17,9 +17,9 @@ const queryClient = new QueryClient({
   },
 });
 
-describe("GithHubUserSearch", () => {
+describe("GitHubUserSearch", () => {
   it("displays the search form", () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
 
     expect(
       screen.getByRole("textbox", { name: "username" })
@@ -28,7 +28,7 @@ describe("GithHubUserSearch", () => {
   });
 
   it('displays the progress bar', async () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
         const submitButton = screen.getByRole('button', {
@@ -46,7 +46,7 @@ describe("GithHubUserSearch", () => {
   });
 
   it('displays the user card info', async () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
         const submitButton = screen.getByRole('button', {
@@ -66,7 +66,7 @@ describe("GithHubUserSearch", () => {
   });
 
   it('displays the a repo list', async () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
         const submitButton = screen.getByRole('button', {
@@ -89,7 +89,7 @@ describe("GithHubUserSearch", () => {
   });
 
   it('displays the an alert when no repos are available', async () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
         const submitButton = screen.getByRole('button', {
@@ -110,7 +110,7 @@ describe("GithHubUserSearch", () => {
   });
 
   it('displays an alert when an username does not exist', async () => {
-    renderWithClient(queryClient, <GithHubUserSearch />);
+    renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
         const submitButton = screen.getByRole('button', {

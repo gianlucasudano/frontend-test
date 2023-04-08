@@ -1,3 +1,3 @@
-import  GithHubUserSearch from './GithHubUserSearch';
+import  GitHubUserSearch from './GitHubUserSearch';
 
-export default GithHubUserSearch;
+export default GitHubUserSearch;
