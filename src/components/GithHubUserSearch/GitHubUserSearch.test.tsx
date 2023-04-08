@@ -65,7 +65,7 @@ describe("GitHubUserSearch", () => {
     });
   });
 
-  it('displays the a repo list', async () => {
+  it('displays a repo list', async () => {
     renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
@@ -88,7 +88,7 @@ describe("GitHubUserSearch", () => {
     });
   });
 
-  it('displays the an alert when no repos are available', async () => {
+  it('displays an alert when no repos are available', async () => {
     renderWithClient(queryClient, <GitHubUserSearch />);
     const user = userEvent.setup();
     const inputUsername = screen.getByRole('textbox', { name: 'username' });
