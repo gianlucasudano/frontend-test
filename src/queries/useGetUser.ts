@@ -12,31 +12,45 @@ export type UserData = {
 }
 
 type UserResponse = {
-  isLoading: boolean;
+  isInitialLoading: boolean;
   data: UserData;
   isError: boolean;
   error: AxiosError;
 }
 
+export type DataRepo = {
+  name: string;
+  html_url: string;
+  stargazers_count: number;
+  forks_count: number;
+};
+
+type DataReposResponse = {
+  isInitialLoading: boolean;
+  data: DataRepo[];
+  isError: boolean;
+  error: AxiosError;
+}
+
 function useGetUser({ username }: { username: string }) {
-  const { isLoading, data, isError, error } = useQuery({
+  const { isInitialLoading, data, isError, error } = useQuery({
     queryKey: [username],
     queryFn: () => getUser({ username }),
     enabled: !!username,
     retry: false,
   });
 
-  return { isLoading, data, isError, error }  as UserResponse; 
+  return { isInitialLoading, data, isError, error }  as UserResponse; 
 }
 
 function useGetUserRepos({ repos_url }: { repos_url: string }) {
-  const { isLoading, data, isError, error } = useQuery({
+  const { isInitialLoading, data, isError, error } = useQuery({
     queryKey: [repos_url],
     queryFn: () => getUserRepos({ repos_url }),
     enabled: !!repos_url,
   });
 
-  return { isLoading, data, isError, error };
+  return { isInitialLoading, data, isError, error } as DataReposResponse;
 }
 
 export { useGetUser, useGetUserRepos };

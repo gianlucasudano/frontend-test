@@ -5,5 +5,6 @@ export {
   getFailureUserResponseHandler,
   getHappyUserReposResponseHandler,
   getHappyUserResponseHandler,
+  getHappyUserFooResponseHandler,
   handlers,
 } from "./handlers";

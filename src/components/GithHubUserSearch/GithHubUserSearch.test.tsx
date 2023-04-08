@@ -7,6 +7,7 @@ import { screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
 import GithHubUserSearch from "./GithHubUserSearch";
+import { getReposResponseMocked } from "mocks/handlers"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,9 +41,53 @@ describe("GithHubUserSearch", () => {
     await waitFor(() => {
       expect(inputUsername).toHaveValue('');
       expect(screen.getByRole('img', {name: 'Tristan Su'})).toBeInTheDocument();
-      expect(screen.getByRole('heading', {name: /foobar/i})).toBeInTheDocument();
+      expect(screen.getByText(/foobar/i)).toBeInTheDocument();
       expect(screen.getByRole('heading', {name: /Tristan Su/i})).toBeInTheDocument();
       expect(screen.getByText(/Lorem ipsum dolor/i)).toBeInTheDocument();
+    });
+  });
+
+  it('displays the a repo list', async () => {
+    renderWithClient(queryClient, <GithHubUserSearch />);
+    const user = userEvent.setup();
+    const inputUsername = screen.getByRole('textbox', { name: 'username' });
+        const submitButton = screen.getByRole('button', {
+      name: /search/i,
+    });
+
+    await user.type(inputUsername, 'foobar');
+    fireEvent.submit(submitButton);
+
+    await waitFor(() => {
+      expect(inputUsername).toHaveValue('');
+      expect(screen.getByRole('heading', {name: /repositories/i})).toBeInTheDocument();
+      for (let i = 0; i < getReposResponseMocked.length; i += 1) {
+        expect(
+          screen.getByText(getReposResponseMocked[i].name)
+        ).toBeInTheDocument();
+      }
+      
+    });
+  });
+
+  it('displays the an alert when no repos are available', async () => {
+    renderWithClient(queryClient, <GithHubUserSearch />);
+    const user = userEvent.setup();
+    const inputUsername = screen.getByRole('textbox', { name: 'username' });
+        const submitButton = screen.getByRole('button', {
+      name: /search/i,
+    });
+
+    await user.type(inputUsername, 'foo');
+    fireEvent.submit(submitButton);
+
+    await waitFor(() => {
+      expect(inputUsername).toHaveValue('');
+      expect(screen.getByRole('heading', {name: /repositories/i})).toBeInTheDocument();
+      expect(
+        screen.getByText(/no repositories available/i)
+      ).toBeInTheDocument();
+      
     });
   });
 

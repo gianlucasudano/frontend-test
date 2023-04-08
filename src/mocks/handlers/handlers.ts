@@ -30,6 +30,15 @@ export const getReposResponseMocked = [
   },
 ];
 
+export const getUserFooResponseMocked = {
+  avatar_url: "https://avatars.githubusercontent.com/u/5953?v=4",
+  bio: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.",
+  html_url: "https://github.com/foo",
+  login: "foo",
+  name: "Tristan Su",
+  repos_url: "https://api.github.com/users/foo/repos",
+};
+
 export const getHappyUserResponseHandler = rest.get(
   "https://api.github.com/users/foobar",
   (_req, res, ctx) => {
@@ -56,8 +65,15 @@ export const getHappyUserReposResponseHandler = rest.get(
   }
 );
 
+export const getHappyUserFooResponseHandler = rest.get(
+  "https://api.github.com/users/foo",
+  (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(getUserFooResponseMocked));
+  }
+);
+
 export const getEmptyUserReposResponseHandler = rest.get(
-  "https://api.github.com/users/foobar/repos",
+  "https://api.github.com/users/foo/repos",
   (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json([]));
   }
@@ -68,4 +84,5 @@ export const handlers = [
   getFailureUserResponseHandler,
   getHappyUserReposResponseHandler,
   getHappyUserResponseHandler,
+  getHappyUserFooResponseHandler,
 ];

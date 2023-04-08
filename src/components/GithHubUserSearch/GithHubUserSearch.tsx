@@ -9,17 +9,14 @@ import { useTheme } from "@mui/material/styles";
 import BoxAlert, { type BoxAlertProps } from "./elements/BoxAlert";
 import SearchForm, { type UserName } from "./elements/SearchForm";
 import UserCard from "./elements/UserCard";
+import Repos from "./elements/Repos";
 
 function GithHubUserSearch() {
   const [username, setUsername] = useState<UserName>("");
-  const { data, isError } = useGetUser({ username: username });
-  const {
-    isLoading: isLoadingRepos,
-    data: dataRepos,
-    error: errorRepos,
-  } = useGetUserRepos({ repos_url: data?.repos_url });
-
-  // console.log(isLoadingRepos, dataRepos, errorRepos);
+  const { data, isError, isInitialLoading } = useGetUser({
+    username: username,
+  });
+  const { data: dataRepos } = useGetUserRepos({ repos_url: data?.repos_url });
 
   const errorsProps: BoxAlertProps = {
     severity: "error",
@@ -40,7 +37,9 @@ function GithHubUserSearch() {
       <Stack gap={2} mt={2} mb={2} padding={4}>
         <SearchForm setUsername={setUsername} />
         {data && <UserCard {...userProps} />}
+        {dataRepos && <Repos dataRepos={dataRepos} />}
         {isError && <BoxAlert {...errorsProps} />}
+        {isInitialLoading && <div>Loading ...</div>}
       </Stack>
     </Paper>
   );

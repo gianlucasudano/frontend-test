@@ -11,7 +11,7 @@ function BoxAlert({
   message,
 }: BoxAlertProps) {
   return (
-    <Box p={2}>
+    <Box>
       <Alert severity={severity}>{message}</Alert>
     </Box>
   );
