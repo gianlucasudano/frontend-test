@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import LinearProgress from '@mui/material/LinearProgress';
 
 import { useGetUser, useGetUserRepos, type UserData } from "queries/useGetUser";
 
@@ -39,7 +41,7 @@ function GithHubUserSearch() {
         {data && <UserCard {...userProps} />}
         {dataRepos && <Repos dataRepos={dataRepos} />}
         {isError && <BoxAlert {...errorsProps} />}
-        {isInitialLoading && <div>Loading ...</div>}
+        {isInitialLoading && <Box><LinearProgress /></Box>}
       </Stack>
     </Paper>
   );

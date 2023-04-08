@@ -27,6 +27,24 @@ describe("GithHubUserSearch", () => {
     expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
   });
 
+  it('displays the progress bar', async () => {
+    renderWithClient(queryClient, <GithHubUserSearch />);
+    const user = userEvent.setup();
+    const inputUsername = screen.getByRole('textbox', { name: 'username' });
+        const submitButton = screen.getByRole('button', {
+      name: /search/i,
+    });
+
+    await user.type(inputUsername, 'foobar');
+    fireEvent.submit(submitButton);
+
+    await waitFor(() => {
+      expect(inputUsername).toHaveValue('');
+      expect(screen.getByRole('progressbar')).toBeInTheDocument();
+      
+    });
+  });
+
   it('displays the user card info', async () => {
     renderWithClient(queryClient, <GithHubUserSearch />);
     const user = userEvent.setup();
