@@ -47,8 +47,7 @@ If the searched username does not exist: An error is shown
 
 `Initial App Setup`:
 
-To speed up the initial setup, I selected tools and dependencies from my [starter web application](https://github.com/gianlucasudano/web-dev-lab).
-This allowed for more time to understand the integration of dependencies required for this home task.
+To expedite the initial setup process, I utilized tools and dependencies from my [starter web application](https://github.com/gianlucasudano/web-dev-lab)., allowing me to allocate more time towards the task at hand.
 
 * **Pros**: Environment based on my previous expertise.
 * **Cons**: No cons.
@@ -62,10 +61,12 @@ I followed a conventional approach to ensure separation of concerns, scalability
 
 `UI and Use of Third-Party Libraries`:
 
-I used ready-made components, combining those in customized components.
+To expedite the development process, I utilized pre-built components and combined them to create custom components.
 
-* **Pros**: Speeds up implementation and allows for focus on the main task.
-* **Cons**: There is a small risk associated with the use of external libraries, such as annoying problems or difficulties with profiling.
+In a real project, there are more factors to consider beyond simply selecting an external library. Particularly in anticipation of implementing an internal Design System in the future, it may be preferable to opt for a less pre-packaged solution. While MUI components offer many features, not all of them may be applicable for the intended use case.
+
+* **Pros**: Accelerates implementation and allows for greater focus on the primary task.
+* **Cons**: There is a minor risk associated with using Material-UI, as it can occasionally be slow or buggy. 
 
 `Data fetching and queries`:
 
@@ -109,7 +110,7 @@ There are a few areas where the app could be improved to enhance the user experi
 
 `Infinite Scrolling`: Currently, the app renders all repositories at once. However, this could be improved by exploring the solution of infinite scrolling. This would enable the app to display a set number of repositories initially and load more as the user scrolls down.
 
-`Security`: Currently, the token is stored in the .env file. However, it's important to explore more secure solutions offered by GitHub. This would ensure that the app is secure and protect against potential security threats.
+`Security, reliability`: At present, the Fine-grained personal access token is stored in the .env file and is a Beta version, which may not be entirely reliable as it may expire prematurely. Nonetheless, it is crucial to explore more robust and secure solutions offered by GitHub to enhance the app's security and mitigate any potential security threats.
 
 ## Feedback about the test
 
